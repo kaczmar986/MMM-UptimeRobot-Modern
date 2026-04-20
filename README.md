@@ -2,7 +2,7 @@
 
 MagicMirror² to get uptime data from http://uptimerobot.com API.
 
-This is a modernized version of the original [MMM-uptimerobot](https://github.com/mrVragec/MMM-uptimerobot) module by [mrVragec].
+This is a modernized version of the original [MMM-uptimerobot](https://github.com/mrVragec/MMM-uptimerobot) module by **[mrVragec](https://github.com/mrVragec)**.
 
 ### Changes in this version:
 * Switched from deprecated `request` library to native `fetch`.
