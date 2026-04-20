@@ -1,23 +1,23 @@
 {
-    "name": "mmm-uptimerobot-modern",
-    "version": "1.0.0",
-    "description": "Modernized MagicMirror module to monitor UptimeRobot servers using fetch API",
-    "author": "Tomasz Kaczmarczyk",
-    "license": "MIT",
-    "homepage": "https://github.com/kaczmar986/MMM-UptimeRobot-Modern",
-    "keywords": [
-        "magicmirror",
-        "uptimerobot",
-        "uptime robot",
-        "uptime",
-        "robot"
-    ],
-        "repository": {
-        "type": "git",
-        "url": "https://github.com/kaczmar986/MMM-UptimeRobot-Modern"
-    },
-    "devDependencies": {
-        "stylelint-config-standard": "latest"
-    },
-    "contributors": ""
+  "name": "mmm-uptimerobot-modern",
+  "version": "2.0.0",
+  "description": "Modernized MagicMirror module to monitor UptimeRobot servers using fetch API",
+  "author": "Tomasz Kaczmarczyk",
+  "license": "MIT",
+  "homepage": "https://github.com/kaczmar986/MMM-UptimeRobot-Modern",
+  "keywords": [
+    "magicmirror",
+    "uptimerobot",
+    "uptime robot",
+    "uptime",
+    "robot"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaczmar986/MMM-UptimeRobot-Modern"
+  },
+  "devDependencies": {
+    "stylelint-config-standard": "latest"
+  },
+  "contributors": ""
 }
