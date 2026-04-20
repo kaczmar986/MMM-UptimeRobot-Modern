@@ -1,6 +1,6 @@
 {
-  "ONLINE": "Włączone",
-  "DOWN": "Wyłączone",
+  "ONLINE": "Działa",
+  "DOWN": "Leży",
   "PAUSED": "Wstrzymane",
   "NOTCHECKEDYET": "Nie sprawdzone",
   "SEEMSDOWN": "Chyba leży",

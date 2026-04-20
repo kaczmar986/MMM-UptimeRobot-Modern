@@ -1,11 +1,12 @@
 {
-    "name": "uptimerobot",
-    "version": "1.2.0",
-    "description": "MagicMirror module to monitor uptime of servers via https://uptimerobot.com",
-    "author": "Simon Crnko",
+    "name": "mmm-uptimerobot-modern",
+    "version": "1.0.0",
+    "description": "Modernized MagicMirror module to monitor UptimeRobot servers using fetch API",
+    "author": "Tomasz Kaczmarczyk",
     "license": "MIT",
-    "homepage": "https://github.com/mrVragec/MMM-uptimerobot",
+    "homepage": "https://github.com/kaczmar986/MMM-UptimeRobot-Modern",
     "keywords": [
+        "magicmirror",
         "uptimerobot",
         "uptime robot",
         "uptime",
@@ -13,17 +14,10 @@
     ],
         "repository": {
         "type": "git",
-        "url": "https://github.com/mrVragec/MMM-uptimerobot"
+        "url": "https://github.com/kaczmar986/MMM-UptimeRobot-Modern"
     },
     "devDependencies": {
-        "grunt": "latest",
-        "grunt-eslint": "latest",
-        "grunt-jsonlint": "latest",
-        "grunt-markdownlint": "^1.0.13",
-        "grunt-stylelint": "latest",
-        "grunt-yamllint": "latest",
-        "stylelint-config-standard": "latest",
-        "time-grunt": "latest"
-    },
+        "stylelint-config-standard": "latest"
+    }
     "contributors": ""
 }
