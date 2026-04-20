@@ -2,16 +2,22 @@
 
 MagicMirror² to get uptime data from http://uptimerobot.com API.
 
+This is a modernized version of the original [MMM-uptimerobot](https://github.com/mrVragec/MMM-uptimerobot) module by [mrVragec].
+
+### Changes in this version:
+* Switched from deprecated `request` library to native `fetch`.
+* Updated for MagicMirror² version 2.x+ compatibility.
+
 ## Examples
 ![](.github/text.png) ![](.github/text_color.png) ![](.github/icons.png) ![](.github/icons_color.png)
 
 
 ## Instalation
-Navigate into your MagicMirror's modules folder:
-`cd ~/MagicMirror/modules`
-Clone this repository in your MagicMirror installation under modules:
-`git clone https://github.com/kaczmar986/MMM-UptimeRobot-Modern`
-Add configuration to config.js
+1. Navigate into your MagicMirror's modules folder:
+2. `cd ~/MagicMirror/modules`
+3. Clone this repository in your MagicMirror installation under modules:
+4. `git clone https://github.com/kaczmar986/MMM-UptimeRobot-Modern`
+5. Add configuration to config.js
 
 ## Using the module
 
