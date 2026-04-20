@@ -1,79 +1,71 @@
 /* Magic Mirror
- * Module: uptimerobot
+ * Module: MMM-UptimeRobot-Modern
  *
- * By Simon Crnko
+ * Originally by Simon Crnko
+ * Modernized by kaczmar986
  * MIT Licensed.
  */
 
-Module.register("uptimerobot", {
+Module.register("MMM-UptimeRobot-Modern", {
   defaults: {
     updateInterval: 60000,
     retryDelay: 5000,
     useIcons: false,
     useColors: false,
     maximumEntries: 10,
-    statuses: "0-1-2-8-9"
+    statuses: "0-1-2-8-9",
+    animationSpeed: 1000
   },
 
-  requiresVersion: "2.1.0", // Required version of MagicMirror
+  requiresVersion: "2.1.0",
 
   start: function () {
-    var self = this;
-    var dataRequest = null;
-
-    //Flag for check if module is loaded
+    this.dataRequest = null;
     this.loaded = false;
-    if (this.config.api_key !== undefined) {
-      // Schedule update timer.
+
+    if (this.config.api_key) {
       this.getData();
-      setInterval(function () {
-        self.updateDom();
-      }, this.config.updateInterval);
+      // Note: We don't need a setInterval here for getData because
+      // the node_helper.js handles the scheduling of new fetches.
     }
   },
 
   getStyles: function () {
-    return ['uptimerobot.css', 'modules/uptimerobot/css/font-awesome.css'];
+    // 1. Updated to your new CSS filename
+    // 2. Switched Font-Awesome to the version included with MagicMirror
+    return ["MMM-UptimeRobot-Modern.css", "font-awesome.css"];
   },
 
   getData: function () {
-      this.sendSocketNotification("uptimerobot-getData", this.config);
+    this.sendSocketNotification("uptimerobot-getData", this.config);
   },
 
-  createWrapper: function(textToTranslate) {
+  createWrapper: function (textToTranslate) {
     var wrapperDataNotification = document.createElement("div");
     wrapperDataNotification.innerHTML = this.translate(textToTranslate);
     return wrapperDataNotification;
   },
 
-  // getScripts: function () {
-  //   return [];
-  // },
-
-  // Load translations files
   getTranslations: function () {
-    //FIXME: This can be load a one file javascript definition
     return {
       en: "translations/en.json",
       es: "translations/es.json",
       de: "translations/de.json",
+      pl: "translations/pl.json",
+      sv: "translations/sv.json",
       fr: "translations/fr.json"
     };
   },
 
   processData: function (data) {
     this.dataRequest = data;
-    if (this.loaded === false) {
-      this.updateDom(this.config.animationSpeed);
-    }
     this.loaded = true;
+    this.updateDom(this.config.animationSpeed);
   },
 
-  // socketNotificationReceived from helper
   socketNotificationReceived: function (notification, payload) {
     if (notification === "uptimerobot-processData") {
       this.processData(payload);
-        this.updateDom();
     }
   },
 
@@ -84,18 +76,18 @@ Module.register("uptimerobot", {
       statusObject.className = statusClass;
     }
 
-    statusObject.className += " " + status;
+    statusObject.classList.add(status);
 
     if (this.config.useColors) {
-      statusObject.className += " colored";
+      statusObject.classList.add("colored");
     }
   },
 
   getStatusTest: function (statusValue) {
-    var status = document.createElement('td');
+    var status = document.createElement("td");
     switch (statusValue) {
       case 0:
-        this.setStatus(status, "PAUSED", "fa fa-pause-circle-o", "paused")
+        this.setStatus(status, "PAUSED", "fa fa-pause-circle-o", "paused");
         break;
       case 1:
         this.setStatus(status, "NOTCHECKEDYET", "fa fa-retweet", "not-checked-yet");
@@ -110,49 +102,39 @@ Module.register("uptimerobot", {
         this.setStatus(status, "DOWN", "fa fa-arrow-circle-down", "offline");
         break;
       default:
-        return "";
+        status.innerHTML = "";
     }
     return status;
   },
 
-
   getDom: function () {
     var self = this;
-    // create element wrapper for show into the module
     var wrapper = document.createElement("div");
+    // Add a class name to the wrapper so CSS can target it specifically
+    wrapper.className = "MMM-UptimeRobot-Modern";
 
-    // If this.dataRequest is not empty
-    if (self.dataRequest) {
+    if (this.dataRequest && this.dataRequest.monitors) {
       var innerTable = document.createElement("table");
       innerTable.className = "small";
 
-      self.dataRequest.monitors.forEach(function (element) {
-        // create new row for each item in array
+      this.dataRequest.monitors.forEach(function (element) {
         var tableLine = document.createElement("tr");
 
-        // create a cell in a row for name of server
         var lineCell = document.createElement("td");
-
-        lineCell.className = 'friendlyName';
+        lineCell.className = "friendlyName";
         lineCell.innerHTML = element.friendly_name;
         tableLine.appendChild(lineCell);
 
-        // add status
         tableLine.appendChild(self.getStatusTest(element.status));
         innerTable.appendChild(tableLine);
       });
 
       wrapper.appendChild(innerTable);
-    } else if (self.config.api_key === undefined) {
-      // Missing API KEY
-      //var wrapperDataNotification = document.createElement("div");
-      // translations  + datanotification
-      //wrapperDataNotification.innerHTML = self.translate("MISSING_API_KEY");
-      wrapper.appendChild(self.createWrapper("MISSING_API_KEY"));
+    } else if (!this.config.api_key) {
+      wrapper.appendChild(this.createWrapper("MISSING_API_KEY"));
     } else {
-      // Loading
       wrapper.className = "dimmed light small";
-      wrapper.appendChild(self.createWrapper("LOADING"));
+      wrapper.appendChild(this.createWrapper("LOADING"));
     }
 
     return wrapper;

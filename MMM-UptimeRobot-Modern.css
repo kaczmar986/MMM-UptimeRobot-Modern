@@ -1,35 +1,39 @@
 /*
- * uptimerobot
+ * MMM-UptimeRobot-Modern
  *
- * By Simon Crnko
+ * Originally by Simon Crnko
+ * Modernized by kaczmar986
  * MIT Licensed.
- *
  */
 
-.uptimerobot .friendlyName {
+.MMM-UptimeRobot-Modern .friendlyName {
     padding-left: 0;
     padding-right: 25px;
 }
 
+/* Colors */
 
-/*  Colors  */
-
-.uptimerobot td.colored.online {
+.MMM-UptimeRobot-Modern td.colored.online {
     color: #9FDF9F;
 }
 
-.uptimerobot td.colored.offline {
+.MMM-UptimeRobot-Modern td.colored.offline {
     color: #FF8E99;
 }
 
-.uptimerobot td.colored.paused {
+.MMM-UptimeRobot-Modern td.colored.paused {
     color: #BCDDFF;
 }
 
-.uptimerobot td.colored.seems-down {
+.MMM-UptimeRobot-Modern td.colored.seems-down {
     color: #FFCC80;
 }
 
-.uptimerobot td.colored.not-checked-yet {
+.MMM-UptimeRobot-Modern td.colored.not-checked-yet {
     color: #D3D3D3;
+}
+
+/* Optional: Add a little vertical spacing between rows */
+.MMM-UptimeRobot-Modern tr {
+    line-height: 1.5;
 }
