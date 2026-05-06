@@ -53,7 +53,7 @@ module.exports = NodeHelper.create({
 
         } catch (error) {
             console.error("MMM-UptimeRobot-Modern: Fetch Error", error);
-            retry = false;
+            retry = true;
         } finally {
             if (retry) {
                 this.scheduleUpdate(this.loaded ? -1 : this.config.retryDelay);
